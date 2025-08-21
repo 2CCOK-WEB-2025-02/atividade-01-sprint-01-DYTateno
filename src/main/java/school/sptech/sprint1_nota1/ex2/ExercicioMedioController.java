@@ -9,15 +9,16 @@ public class ExercicioMedioController {
 
     @GetMapping("/ex-02/{numero}")
     public Boolean exercicioMedio(@PathVariable int numero) {
-        Boolean primo = true;
-        for (int i = 2; i < numero ; i++) {
-
-            if (numero % i != 0){
-                System.out.println("É primos");
-                primo= false;
-            }
-
+        if (numero <= 1) {
+            return false;
         }
-        return primo;
+
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
